@@ -1,5 +1,5 @@
 {
-  "name": "boilermaker",
+  "name": "zach_boilermaker",
   "version": "1.0.0",
   "description": "Some boilerplate code to get you started - get shakin'!",
   "engines": {
@@ -77,7 +77,9 @@
     "axios-mock-adapter": "^1.15.0",
     "babel-eslint": "^8.2.6",
     "babel-loader": "^8.0.0-beta.4",
+    "babel-preset-react": "^6.24.1",
     "chai": "^3.5.0",
+    "css-loader": "^2.1.0",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",
     "eslint": "^4.19.1",
@@ -93,7 +95,9 @@
     "react-test-renderer": "^16.4.2",
     "redux-devtools-extension": "^2.13.5",
     "redux-mock-store": "^1.5.3",
+    "style-loader": "^0.23.1",
     "supertest": "^3.1.0",
+    "volleyball": "^1.5.1",
     "webpack": "^4.16.4",
     "webpack-cli": "^3.1.0"
   }

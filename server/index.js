@@ -1,6 +1,6 @@
 const path = require('path')
 const express = require('express')
-const morgan = require('morgan')
+const volleyball = require('volleyball')
 const compression = require('compression')
 const session = require('express-session')
 const passport = require('passport')
@@ -42,7 +42,7 @@ passport.deserializeUser(async (id, done) => {
 
 const createApp = () => {
   // logging middleware
-  app.use(morgan('dev'))
+  app.use(volleyball)
 
   // body parsing middleware
   app.use(express.json())
@@ -54,7 +54,7 @@ const createApp = () => {
   // session middleware with passport
   app.use(
     session({
-      secret: process.env.SESSION_SECRET || 'my best friend is Cody',
+      secret: process.env.SESSION_SECRET || 'Some String as a Placeholder',
       store: sessionStore,
       resave: false,
       saveUninitialized: false
@@ -63,7 +63,7 @@ const createApp = () => {
   app.use(passport.initialize())
   app.use(passport.session())
 
-  // auth and api routes
+  // auth and api routes or any other modular routing
   app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))
 
@@ -90,6 +90,7 @@ const createApp = () => {
   app.use((err, req, res, next) => {
     console.error(err)
     console.error(err.stack)
+    //This is where you could serve up an html file that displays a 'Fail Whale" type image or message
     res.status(err.status || 500).send(err.message || 'Internal server error.')
   })
 }
@@ -97,7 +98,7 @@ const createApp = () => {
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
   const server = app.listen(PORT, () =>
-    console.log(`Mixing it up on port ${PORT}`)
+    console.log(`Listening on port: ${PORT}`)
   )
 
   // set up our socket control center

@@ -24,6 +24,7 @@ router.post('/signup', async (req, res, next) => {
     const user = await User.create(req.body)
     req.login(user, err => (err ? next(err) : res.json(user)))
   } catch (err) {
+    //checking to see if this already exists
     if (err.name === 'SequelizeUniqueConstraintError') {
       res.status(401).send('User already exists')
     } else {
@@ -31,13 +32,15 @@ router.post('/signup', async (req, res, next) => {
     }
   }
 })
-
+//post route to stop the session on the DB But i guess could be a delete route.... check workshop 8. "logout"
 router.post('/logout', (req, res) => {
   req.logout()
+  //extra step to logout but also forget that use ever had a session.
   req.session.destroy()
   res.redirect('/')
 })
 
+//this is the user in the seeion (logged in). This route shoes the json has a user/ the req has a user key/value
 router.get('/me', (req, res) => {
   res.json(req.user)
 })
