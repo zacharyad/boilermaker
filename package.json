@@ -99,6 +99,6 @@
     "supertest": "^3.1.0",
     "volleyball": "^1.5.1",
     "webpack": "^4.16.4",
-    "webpack-cli": "^3.1.0"
+    "webpack-cli": "^3.3.12"
   }
 }
